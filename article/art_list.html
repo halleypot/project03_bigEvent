@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artical List</title>
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/article/art_list.css">
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">文章列表</div>
+        <div class="layui-card-body">
+
+            <!-- 文章筛选UI -->
+            <form class="layui-form" id="art_filter">
+                <!-- 分类 -->
+                <div class="layui-form-item layui-inline">
+                    <select name="cate_id">
+
+                    </select>
+                </div>
+                <!-- 文章状态 -->
+                <div class="layui-form-item layui-inline">
+                    <select name="state" id="cateState">
+                        <option value="">所有状态</option>
+                        <option value="已发布">已发布</option>
+                        <option value="草稿">草稿</option>
+                    </select>
+                </div>
+
+                <div class="layui-form-item layui-inline">
+
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">筛选</button>
+
+                </div>
+            </form>
+            <!-- 文章列表 -->
+            <table class="layui-table">
+                <colgroup>
+                    <col width="500">
+                    <col>
+                    <col width="150">
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>文章标题</th>
+                        <th>分类</th>
+                        <th>发表时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                </tbody>
+            </table>
+
+            <!-- 分页UI -->
+            <div id="page"></div>
+
+        </div>
+    </div>
+
+    <!-- 文章列表 -->
+    <script type="text/html" id="tpl-artList">
+        {{each data val}}
+        <tr>
+            <td>{{val.title}}</td>
+            <td>{{val.cate_name}}</td>
+            <td>{{val.pub_date|dateFormat}}</td>
+            <td>{{val.state}}</td>
+            <td>
+                <button type="button" class="layui-btn layui-btn-normal layui-btn-xs">编辑</button>
+                <button type="button" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+            </td>
+        </tr>
+        {{/each }}
+    </script>
+
+    <!-- 文章分类下拉框 -->
+    <script type="text/html" id="tpl-cate">
+        <option value="">所有分类</option>
+        {{each data val}}
+        <option value="{{val.Id}}">{{val.name}}</option>
+        {{/each}}
+    </script>
+
+    <!-- 文章状态下拉框 -->
+    <script type="text/html" id="tpl-cate">
+        <option value="">所有状态</option>
+        {{each data val}}
+        <option value="{{val.Id}}">{{val.name}}</option>
+        {{/each}}
+    </script>
+
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+    <script src="../assets/js/baseAPI.js"></script>
+    <script src="../assets/js/article/art_list.js"></script>
+</body>
+
+</html>

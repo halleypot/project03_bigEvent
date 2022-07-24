@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artical Publication</title>
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/article/art_pub.css">
+
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">Post an article</div>
+        <div class="layui-card-body">
+            <!-- 文章标题 -->
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Title</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                            autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <!-- 文章类别 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章类别</label>
+                    <div class="layui-input-block">
+                        <select name="cate_id" lay-verify="required"></select>
+                    </div>
+                </div>
+
+                <!-- 文章内容 -->
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">文章内容</label>
+                    <div class="layui-input-block">
+                        <textarea name="desc" placeholder="请输入内容" class="layui-textarea" id="myText"></textarea>
+                    </div>
+                </div>
+
+                <!-- 头像裁剪选择 -->
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">发布</button>
+                        <button class="layui-btn layui-btn-primary">存为草稿</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- 文章类别模板引擎 -->
+    <script type="text/html" id="tpl-artCate">
+        <option value="">请选择文章类别</option>
+        {{each data val}}
+        <option value="{{val.Id}}">{{val.name}}</option>
+        {{/each}}
+    </script>
+
+
+    <script src="../assets/lib/layui/css/layui.css"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/lib/tinymce/tinymce.min.js"></script>
+    <script src="../assets/lib/tinymce/tinymce_setup.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+    <script src="../assets/js/baseAPI.js"></script>
+    <script src="../assets/js/article/art_pub.js"></script>
+</body>
+
+</html>
